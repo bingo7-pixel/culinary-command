@@ -1,6 +1,8 @@
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { StatsCard } from "@/components/StatsCard";
 import { OrderTable } from "@/components/OrderTable";
+import { OrderHistory } from "@/components/OrderHistory";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   return (
@@ -41,8 +43,18 @@ const Index = () => {
 
         <div className="mt-8">
           <div className="bg-dashboard-card rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">Active Orders</h2>
-            <OrderTable />
+            <Tabs defaultValue="active" className="space-y-4">
+              <TabsList>
+                <TabsTrigger value="active">Active Orders</TabsTrigger>
+                <TabsTrigger value="history">Order History</TabsTrigger>
+              </TabsList>
+              <TabsContent value="active">
+                <OrderTable />
+              </TabsContent>
+              <TabsContent value="history">
+                <OrderHistory />
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </main>
