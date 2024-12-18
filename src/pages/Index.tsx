@@ -3,15 +3,19 @@ import { StatsCard } from "@/components/StatsCard";
 import { OrderTable } from "@/components/OrderTable";
 import { OrderHistory } from "@/components/OrderHistory";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { NotificationsPanel } from "@/components/NotificationsPanel";
 
 const Index = () => {
   return (
     <div className="flex bg-dashboard-background min-h-screen">
       <DashboardSidebar />
       <main className="flex-1 p-8">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white">Dashboard Overview</h1>
-          <p className="text-gray-400">Welcome back! Here's what's happening today.</p>
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-bold text-white">Dashboard Overview</h1>
+            <p className="text-gray-400">Welcome back! Here's what's happening today.</p>
+          </div>
+          <NotificationsPanel />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
