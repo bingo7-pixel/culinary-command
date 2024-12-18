@@ -30,8 +30,8 @@ export function OrderHistoryFilters({
 }: OrderHistoryFiltersProps) {
   const clearFilters = () => {
     setSearchTerm("");
-    setSelectedType("");
-    setSelectedStatus("");
+    setSelectedType("all");
+    setSelectedStatus("all");
     setDate(undefined);
   };
 
@@ -49,7 +49,7 @@ export function OrderHistoryFilters({
             <SelectValue placeholder="Order Type" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Types</SelectItem>
+            <SelectItem value="all">All Types</SelectItem>
             <SelectItem value="dine-in">Dine-in</SelectItem>
             <SelectItem value="takeout">Takeout</SelectItem>
             <SelectItem value="delivery">Delivery</SelectItem>
@@ -61,7 +61,7 @@ export function OrderHistoryFilters({
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Statuses</SelectItem>
+            <SelectItem value="all">All Statuses</SelectItem>
             <SelectItem value="completed">Completed</SelectItem>
             <SelectItem value="canceled">Canceled</SelectItem>
             <SelectItem value="refunded">Refunded</SelectItem>
@@ -91,7 +91,7 @@ export function OrderHistoryFilters({
           </PopoverContent>
         </Popover>
 
-        {(searchTerm || selectedType || selectedStatus || date) && (
+        {(searchTerm || selectedType !== "all" || selectedStatus !== "all" || date) && (
           <Button
             variant="ghost"
             onClick={clearFilters}
