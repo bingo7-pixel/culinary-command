@@ -7,6 +7,7 @@
  */
 import { useState } from "react";
 import { Download } from "lucide-react";
+import { format } from "date-fns"; // Add this import
 import { Button } from "@/components/ui/button";
 import { OrderHistoryFilters } from "./order-history/OrderHistoryFilters";
 import { OrderHistoryTable } from "./order-history/OrderHistoryTable";
@@ -42,8 +43,8 @@ export function OrderHistory() {
   // State management
   const [orders] = useState<Order[]>(mockOrders);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedType, setSelectedType] = useState<string>("");
-  const [selectedStatus, setSelectedStatus] = useState<string>("");
+  const [selectedType, setSelectedType] = useState<string>("all"); // Changed from empty string to "all"
+  const [selectedStatus, setSelectedStatus] = useState<string>("all"); // Changed from empty string to "all"
   const [date, setDate] = useState<Date>();
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
@@ -51,8 +52,8 @@ export function OrderHistory() {
   const filteredOrders = orders.filter(order => {
     const matchesSearch = order.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          order.id.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = !selectedType || order.type === selectedType;
-    const matchesStatus = !selectedStatus || order.status === selectedStatus;
+    const matchesType = selectedType === "all" || order.type === selectedType;
+    const matchesStatus = selectedStatus === "all" || order.status === selectedStatus;
     const matchesDate = !date || format(order.orderDate, "yyyy-MM-dd") === format(date, "yyyy-MM-dd");
     
     return matchesSearch && matchesType && matchesStatus && matchesDate;
