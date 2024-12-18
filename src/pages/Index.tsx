@@ -1,5 +1,6 @@
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { StatsCard } from "@/components/StatsCard";
+import { OrderTable } from "@/components/OrderTable";
 
 const Index = () => {
   return (
@@ -38,14 +39,10 @@ const Index = () => {
           />
         </div>
 
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="mt-8">
           <div className="bg-dashboard-card rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">Recent Orders</h2>
-            {/* Add order list here in next iteration */}
-          </div>
-          <div className="bg-dashboard-card rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-white mb-4">Performance Chart</h2>
-            {/* Add chart here in next iteration */}
+            <h2 className="text-lg font-semibold text-white mb-4">Active Orders</h2>
+            <OrderTable />
           </div>
         </div>
       </main>
